@@ -4,7 +4,7 @@ import { AppShell, Burger, Group } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 import {
-  CurrentProcessStateContext,
+  CurrentProcessContext,
   ProcessIdentifier,
 } from '../../hooks/useCurrentProcess';
 import ProcessListSidePanel from '../features/ProcessListSidePanel';
@@ -22,7 +22,7 @@ const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
 
 export function AppLayout() {
   const [opened, { toggle }] = useDisclosure();
-  const { currentProcess } = useContext(CurrentProcessStateContext);
+  const { currentProcess } = useContext(CurrentProcessContext);
   const processComponent = processComponentSelector(currentProcess);
 
   return (
