@@ -2,7 +2,7 @@ import { NavLink, NavLinkProps } from '@mantine/core';
 import { useContext } from 'react';
 
 import {
-  CurrentProcessStateContext,
+  CurrentProcessContext,
   ProcessIdentifier,
 } from '../../hooks/useCurrentProcess';
 
@@ -25,7 +25,7 @@ const ProcessNavLink: React.FC<ProcessNavLinkProps> = ({
 
 const ProcessListSidePanel: React.FC = () => {
   const { currentProcess, setCurrentProcess } = useContext(
-    CurrentProcessStateContext
+    CurrentProcessContext
   );
 
   const onClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
