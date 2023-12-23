@@ -1,10 +1,10 @@
-import { NavLink, NavLinkProps } from "@mantine/core";
-import { useContext } from "react";
+import { NavLink, NavLinkProps } from '@mantine/core';
+import { useContext } from 'react';
 
 import {
   CurrentProcessStateContext,
   ProcessIdentifier,
-} from "../../hooks/useCurrentProcess";
+} from '../../hooks/useCurrentProcess';
 
 interface ProcessNavLinkProps extends NavLinkProps {
   process?: ProcessIdentifier;
@@ -29,7 +29,7 @@ const ProcessListSidePanel: React.FC = () => {
   );
 
   const onClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    let process = event.currentTarget.getAttribute("data-process");
+    let process = event.currentTarget.getAttribute('data-process');
     if (process) {
       console.log(`${process}がクリックされました。`);
       setCurrentProcess(process as ProcessIdentifier);
@@ -41,14 +41,14 @@ const ProcessListSidePanel: React.FC = () => {
       <ProcessNavLink
         label="説明"
         process="description"
-        active={currentProcess === "description"}
+        active={currentProcess === 'description'}
         onClick={onClick}
       />
       <ProcessNavLink label="コマンド">
         <ProcessNavLink
           label="コマンドを実行"
           process="execute-command"
-          active={currentProcess === "execute-command"}
+          active={currentProcess === 'execute-command'}
           onClick={onClick}
         />
       </ProcessNavLink>

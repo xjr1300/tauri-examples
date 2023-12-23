@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { Blockquote } from "@mantine/core";
-import { IconInfoCircle } from "@tabler/icons-react";
+import { FC } from 'react';
+import { Blockquote } from '@mantine/core';
+import { IconInfoCircle } from '@tabler/icons-react';
 
 const Description: FC = () => {
   const icon = <IconInfoCircle />;
