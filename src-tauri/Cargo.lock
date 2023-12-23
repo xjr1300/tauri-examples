@@ -2720,7 +2720,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "tauri-fluent"
+name = "tauri-examples"
 version = "0.0.0"
 dependencies = [
  "serde",
