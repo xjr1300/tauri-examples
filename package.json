@@ -1,5 +1,5 @@
 {
-  "name": "tauri-fluent",
+  "name": "tauri-examples",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,8 +10,16 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@fluentui/react": "^8.113.1",
+    "@mantine/core": "^7.3.2",
+    "@mantine/dates": "^7.3.2",
+    "@mantine/dropzone": "^7.3.2",
+    "@mantine/form": "^7.3.2",
+    "@mantine/hooks": "^7.3.2",
+    "@mantine/modals": "^7.3.2",
+    "@mantine/notifications": "^7.3.2",
+    "@tabler/icons-react": "^2.44.0",
     "@tauri-apps/api": "^1.5.2",
+    "dayjs": "^1.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

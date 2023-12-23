@@ -6,7 +6,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "tauri-fluent",
+    "productName": "tauri-examples",
     "version": "0.0.0"
   },
   "tauri": {
@@ -36,7 +36,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "tauri-fluent",
+        "title": "Tauri Examples",
         "width": 800,
         "height": 600
       }
