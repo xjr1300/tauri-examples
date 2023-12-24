@@ -3,7 +3,8 @@ import { createContext } from 'react';
 export type ProcessIdentifier =
   | 'description'
   | 'execute-command'
-  | 'execute-command-json';
+  | 'execute-command-json'
+  | 'maybe-error';
 
 export type CurrentProcess = {
   currentProcess: ProcessIdentifier;

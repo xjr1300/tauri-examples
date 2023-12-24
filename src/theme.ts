@@ -1,4 +1,10 @@
-import { Button, NumberInput, TextInput, createTheme } from '@mantine/core';
+import {
+  Button,
+  NumberInput,
+  Radio,
+  TextInput,
+  createTheme,
+} from '@mantine/core';
 
 export const theme = createTheme({
   // fontSizes: {
@@ -25,6 +31,12 @@ export const theme = createTheme({
       defaultProps: {
         size: 'xs',
         radius: 0,
+      },
+    }),
+    Radio: Radio.extend({
+      defaultProps: {
+        size: 'sm',
+        variant: 'outline',
       },
     }),
   },
