@@ -31,7 +31,6 @@ const ProcessListSidePanel: React.FC = () => {
   const onClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     let process = event.currentTarget.getAttribute('data-process');
     if (process) {
-      console.log(`${process}がクリックされました。`);
       setCurrentProcess(process as ProcessIdentifier);
     }
   };
@@ -55,6 +54,12 @@ const ProcessListSidePanel: React.FC = () => {
           label="Jsonで送受信するコマンドを実行"
           process="execute-command-json"
           active={currentProcess === 'execute-command-json'}
+          onClick={onClick}
+        />
+        <ProcessNavLink
+          label="バックエンドから返されたエラーを処理"
+          process="maybe-error"
+          active={currentProcess === 'maybe-error'}
           onClick={onClick}
         />
       </ProcessNavLink>

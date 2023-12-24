@@ -11,6 +11,7 @@ import ProcessListSidePanel from '../features/ProcessListSidePanel';
 import Description from '../features/Description';
 import ExecuteCommand from '../features/ExecuteCommand';
 import ExecuteCommandJson from '../features/ExecuteCommandJson';
+import MaybeError from '../features/MaybeError';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
@@ -18,6 +19,8 @@ const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
       return <ExecuteCommand />;
     case 'execute-command-json':
       return <ExecuteCommandJson />;
+    case 'maybe-error':
+      return <MaybeError />;
     default:
       return <Description />;
   }

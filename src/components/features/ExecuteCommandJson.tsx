@@ -34,7 +34,6 @@ const ExecuteCommandJson: React.FC = () => {
   return (
     <form
       onSubmit={form.onSubmit((values) => {
-        console.log(values);
         getMessage(values.name, values.age);
       })}
     >
