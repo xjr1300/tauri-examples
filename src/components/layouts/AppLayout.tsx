@@ -10,11 +10,14 @@ import {
 import ProcessListSidePanel from '../features/ProcessListSidePanel';
 import Description from '../features/Description';
 import ExecuteCommand from '../features/ExecuteCommand';
+import ExecuteCommandJson from '../features/ExecuteCommandJson';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
     case 'execute-command':
       return <ExecuteCommand />;
+    case 'execute-command-json':
+      return <ExecuteCommandJson />;
     default:
       return <Description />;
   }
