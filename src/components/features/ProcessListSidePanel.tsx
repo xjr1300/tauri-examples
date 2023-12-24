@@ -51,6 +51,12 @@ const ProcessListSidePanel: React.FC = () => {
           active={currentProcess === 'execute-command'}
           onClick={onClick}
         />
+        <ProcessNavLink
+          label="Jsonで送受信するコマンドを実行"
+          process="execute-command-json"
+          active={currentProcess === 'execute-command-json'}
+          onClick={onClick}
+        />
       </ProcessNavLink>
     </>
   );

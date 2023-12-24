@@ -1,6 +1,9 @@
 import { createContext } from 'react';
 
-export type ProcessIdentifier = 'description' | 'execute-command';
+export type ProcessIdentifier =
+  | 'description'
+  | 'execute-command'
+  | 'execute-command-json';
 
 export type CurrentProcess = {
   currentProcess: ProcessIdentifier;

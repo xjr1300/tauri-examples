@@ -4,7 +4,7 @@ import { NumberInput, TextInput, Button, Flex, Box, Text } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { invoke } from '@tauri-apps/api';
 
-const ExecuteCommand: React.FC = () => {
+const ExecuteCommandJson: React.FC = () => {
   const form = useForm({
     initialValues: {
       name: '',
@@ -20,12 +20,15 @@ const ExecuteCommand: React.FC = () => {
   });
   const [message, setMessage] = useState<string | undefined>(undefined);
 
-  // Rustにデータを送信して、結果を受け取る。
-  // Rust側でコマンドを処理する関数が同期または非同期(`async`)に関わらず、`invoke`は`Promise`を返す。
-  // よって、`async/await`または`then/catch`で処理する。
   const getMessage = async (name: string, age: number) => {
-    const msg = await invoke<string>('execute_command', { name, age });
-    setMessage(msg);
+    let args = {
+      name,
+      age,
+    };
+    const result = await invoke<object>('execute_command_json', { args });
+    if (isExecuteCommandJsonResult(result)) {
+      setMessage(result.message);
+    }
   };
 
   return (
@@ -57,4 +60,18 @@ const ExecuteCommand: React.FC = () => {
   );
 };
 
-export default ExecuteCommand;
+// execute-command-jsonコマンド結果
+type ExecuteCommandJsonResult = {
+  message: string;
+};
+
+// execute-command-jsonコマンド結果型ガード関数
+const isExecuteCommandJsonResult = (
+  value: unknown
+): value is ExecuteCommandJsonResult => {
+  const result = value as ExecuteCommandJsonResult;
+
+  return typeof result.message === 'string';
+};
+
+export default ExecuteCommandJson;
