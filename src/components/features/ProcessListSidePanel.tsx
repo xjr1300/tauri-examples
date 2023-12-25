@@ -84,6 +84,12 @@ const ProcessListSidePanel: React.FC = () => {
           active={currentProcess === 'open-dialog'}
           onClick={onClick}
         />
+        <ProcessNavLink
+          label="セーブダイアログを開く"
+          process="save-dialog"
+          active={currentProcess === 'save-dialog'}
+          onClick={onClick}
+        />
       </ProcessNavLink>
     </>
   );

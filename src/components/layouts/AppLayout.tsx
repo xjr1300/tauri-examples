@@ -15,6 +15,7 @@ import MaybeError from '../features/commands/MaybeError';
 import ReadFileContent from '../features/files/ReadFileContent';
 import WriteFileContent from '../features/files/WriteFileContent';
 import OpenDialog from '../features/dialogs/OpenDialog';
+import SaveDialog from '../features/dialogs/SaveDialog';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
@@ -30,6 +31,8 @@ const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
       return <WriteFileContent />;
     case 'open-dialog':
       return <OpenDialog />;
+    case 'save-dialog':
+      return <SaveDialog />;
     default:
       return <Description />;
   }
