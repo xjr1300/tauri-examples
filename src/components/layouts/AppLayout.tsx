@@ -9,9 +9,9 @@ import {
 } from '../../hooks/useCurrentProcess';
 import ProcessListSidePanel from '../features/ProcessListSidePanel';
 import Description from '../features/Description';
-import ExecuteCommand from '../features/ExecuteCommand';
-import ExecuteCommandJson from '../features/ExecuteCommandJson';
-import MaybeError from '../features/MaybeError';
+import ExecuteCommand from '../features/executeCommands/ExecuteCommand';
+import ExecuteCommandJson from '../features/executeCommands/ExecuteCommandJson';
+import MaybeError from '../features/executeCommands/MaybeError';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
