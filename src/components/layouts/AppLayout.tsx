@@ -9,12 +9,12 @@ import {
 } from '../../hooks/useCurrentProcess';
 import ProcessListSidePanel from '../features/ProcessListSidePanel';
 import Description from '../features/Description';
-import ExecuteCommand from '../features/executeCommands/ExecuteCommand';
-import ExecuteCommandJson from '../features/executeCommands/ExecuteCommandJson';
-import MaybeError from '../features/executeCommands/MaybeError';
-import ReadFileContent from '../features/fileOperations/ReadFileContent';
-import WriteFileContent from '../features/fileOperations/WriteFileContent';
-import OpenDialog from '../features/dialogOperations/OpenDialog';
+import ExecuteCommand from '../features/commands/ExecuteCommand';
+import ExecuteCommandJson from '../features/commands/ExecuteCommandJson';
+import MaybeError from '../features/commands/MaybeError';
+import ReadFileContent from '../features/files/ReadFileContent';
+import WriteFileContent from '../features/files/WriteFileContent';
+import OpenDialog from '../features/dialogs/OpenDialog';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
