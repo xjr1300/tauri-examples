@@ -35,7 +35,7 @@ import { useForm } from '@mantine/form';
 //   }
 // }
 // ```
-const OpenFileDialog: React.FC = () => {
+const OpenDialog: React.FC = () => {
   const form = useForm({
     initialValues: {
       defaultPath: '',
@@ -171,4 +171,4 @@ const retrieveDialogFilters = (
   ];
 };
 
-export default OpenFileDialog;
+export default OpenDialog;

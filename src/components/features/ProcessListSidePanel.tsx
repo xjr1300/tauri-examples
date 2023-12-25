@@ -79,9 +79,9 @@ const ProcessListSidePanel: React.FC = () => {
       </ProcessNavLink>
       <ProcessNavLink label="ダイアログ操作" defaultOpened>
         <ProcessNavLink
-          label="オープンファイルダイアログを開く"
-          process="open-file-dialog"
-          active={currentProcess === 'open-file-dialog'}
+          label="オープンダイアログを開く"
+          process="open-dialog"
+          active={currentProcess === 'open-dialog'}
           onClick={onClick}
         />
       </ProcessNavLink>
