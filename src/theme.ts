@@ -3,7 +3,9 @@ import {
   NumberInput,
   Radio,
   TextInput,
+  Text,
   createTheme,
+  Select,
 } from '@mantine/core';
 
 export const theme = createTheme({
@@ -15,6 +17,11 @@ export const theme = createTheme({
   //   xl: rem(20),
   // },
   components: {
+    Text: Text.extend({
+      defaultProps: {
+        size: 'sm',
+      },
+    }),
     TextInput: TextInput.extend({
       defaultProps: {
         size: 'xs',
@@ -37,6 +44,12 @@ export const theme = createTheme({
       defaultProps: {
         size: 'sm',
         variant: 'outline',
+      },
+    }),
+    Select: Select.extend({
+      defaultProps: {
+        size: 'xs',
+        radius: 0,
       },
     }),
   },

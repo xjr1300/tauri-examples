@@ -5,7 +5,7 @@ export type ProcessIdentifier =
   | 'execute-command'
   | 'execute-command-json'
   | 'maybe-error'
-  | 'read-settings';
+  | 'read-file-content';
 
 export type CurrentProcess = {
   currentProcess: ProcessIdentifier;

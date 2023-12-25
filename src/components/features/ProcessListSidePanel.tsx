@@ -65,9 +65,9 @@ const ProcessListSidePanel: React.FC = () => {
       </ProcessNavLink>
       <ProcessNavLink label="ファイル操作">
         <ProcessNavLink
-          label="設定ファイルを読み込み"
-          process="read-settings"
-          active={currentProcess === 'read-settings'}
+          label="ファイルを読み込み"
+          process="read-file-content"
+          active={currentProcess === 'read-file-content'}
           onClick={onClick}
         />
       </ProcessNavLink>
