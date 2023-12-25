@@ -22,6 +22,9 @@
       "fs": {
         "all": true,
         "scope": ["$HOME", "$HOME/*", "$HOME/**", "$HOME/**/*"]
+      },
+      "dialog": {
+        "all": true
       }
     },
     "bundle": {
