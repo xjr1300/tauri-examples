@@ -6,6 +6,7 @@ import {
   Text,
   createTheme,
   Select,
+  Textarea,
 } from '@mantine/core';
 
 export const theme = createTheme({
@@ -23,6 +24,12 @@ export const theme = createTheme({
       },
     }),
     TextInput: TextInput.extend({
+      defaultProps: {
+        size: 'xs',
+        radius: 0,
+      },
+    }),
+    Textarea: Textarea.extend({
       defaultProps: {
         size: 'xs',
         radius: 0,

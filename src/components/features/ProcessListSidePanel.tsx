@@ -70,6 +70,12 @@ const ProcessListSidePanel: React.FC = () => {
           active={currentProcess === 'read-file-content'}
           onClick={onClick}
         />
+        <ProcessNavLink
+          label="ファイルを書き込み"
+          process="write-file-content"
+          active={currentProcess === 'write-file-content'}
+          onClick={onClick}
+        />
       </ProcessNavLink>
     </>
   );
