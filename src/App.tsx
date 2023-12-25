@@ -8,6 +8,7 @@ import {
   CurrentProcessContext,
   ProcessIdentifier,
 } from './hooks/useCurrentProcess';
+import './style.css';
 
 const App: FC = () => {
   const [currentProcess, setCurrentProcess] =
