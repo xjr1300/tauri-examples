@@ -9,9 +9,12 @@ import {
 } from '../../hooks/useCurrentProcess';
 import ProcessListSidePanel from '../features/ProcessListSidePanel';
 import Description from '../features/Description';
-import ExecuteCommand from '../features/ExecuteCommand';
-import ExecuteCommandJson from '../features/ExecuteCommandJson';
-import MaybeError from '../features/MaybeError';
+import ExecuteCommand from '../features/executeCommands/ExecuteCommand';
+import ExecuteCommandJson from '../features/executeCommands/ExecuteCommandJson';
+import MaybeError from '../features/executeCommands/MaybeError';
+import ReadFileContent from '../features/fileOperations/ReadFileContent';
+import WriteFileContent from '../features/fileOperations/WriteFileContent';
+import OpenFileDialog from '../features/dialogOperations/OpenFileDialog';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
@@ -21,6 +24,12 @@ const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
       return <ExecuteCommandJson />;
     case 'maybe-error':
       return <MaybeError />;
+    case 'read-file-content':
+      return <ReadFileContent />;
+    case 'write-file-content':
+      return <WriteFileContent />;
+    case 'open-file-dialog':
+      return <OpenFileDialog />;
     default:
       return <Description />;
   }

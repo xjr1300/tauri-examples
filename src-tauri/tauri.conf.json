@@ -15,6 +15,16 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "path": {
+        "all": true
+      },
+      "fs": {
+        "all": true,
+        "scope": ["$HOME", "$HOME/*", "$HOME/**", "$HOME/**/*"]
+      },
+      "dialog": {
+        "all": true
       }
     },
     "bundle": {
