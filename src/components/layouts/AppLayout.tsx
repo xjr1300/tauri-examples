@@ -13,6 +13,7 @@ import ExecuteCommand from '../features/executeCommands/ExecuteCommand';
 import ExecuteCommandJson from '../features/executeCommands/ExecuteCommandJson';
 import MaybeError from '../features/executeCommands/MaybeError';
 import ReadFileContent from '../features/fileOperations/ReadFileContent';
+import WriteFileContent from '../features/fileOperations/WriteFileContent';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
@@ -24,6 +25,8 @@ const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
       return <MaybeError />;
     case 'read-file-content':
       return <ReadFileContent />;
+    case 'write-file-content':
+      return <WriteFileContent />;
     default:
       return <Description />;
   }

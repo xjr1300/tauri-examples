@@ -93,7 +93,7 @@ const ReadFileContent: React.FC = () => {
 const StyledButton = createPolymorphicComponent<'button', ButtonProps>(styled(
   Button
 )`
-  width: 130px;
+  width: 140px;
 `);
 
 export default ReadFileContent;
