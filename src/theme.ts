@@ -7,6 +7,7 @@ import {
   createTheme,
   Select,
   Textarea,
+  Checkbox,
 } from '@mantine/core';
 
 export const theme = createTheme({
@@ -50,6 +51,12 @@ export const theme = createTheme({
     Radio: Radio.extend({
       defaultProps: {
         size: 'sm',
+        variant: 'outline',
+      },
+    }),
+    Checkbox: Checkbox.extend({
+      defaultProps: {
+        size: 'xs',
         variant: 'outline',
       },
     }),

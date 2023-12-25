@@ -20,8 +20,13 @@ import styled from '@emotion/styled';
 // 許可しない。よって、読み書きするファイルのパスを`BaseDirectory`、または`path`モジュールにある`homeDir`
 // 関数などを使用して、相対パスで指定しなければならない。
 // また、`./src-tauri/tauri.conf.json`ファイルで、`path`または`fs`モジュールの使用を許可しなければならず、
+// 許可していない場合、次のエラーが発生する。
+// `Unhandled Promise Rejection: The `Fs` module is not enabled.`
+//
 // さらに、`tauri > fs > scope`に、読み書きを許可するパスを設定する必要がある。
-// なお、隠しファイルはその隠しファイルのパスを直接していしなければならない(ようである)。
+// なお、隠しファイルはその隠しファイルのパスを直接していしなければならない(ようである)(例: `$HOME/.vimrc`)。
+// パスを許可していない場合、次のエラーが発生する。
+// `Unhandled Promise Rejection: path not allowed on the configured scope`
 //
 // ```json
 // "tauri": {
