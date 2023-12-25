@@ -33,7 +33,7 @@ fn execute_command_json(args: ExecuteCommandArgs) -> ExecuteCommandResult {
     }
 }
 
-/*-------------------- Maybe Command --------------------*/
+/*-------------------- Maybe Error --------------------*/
 #[tauri::command]
 fn maybe_error(expected: String) -> Result<String, MaybeError> {
     match expected.as_str() {
