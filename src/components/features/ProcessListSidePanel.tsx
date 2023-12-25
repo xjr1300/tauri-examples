@@ -43,7 +43,7 @@ const ProcessListSidePanel: React.FC = () => {
         active={currentProcess === 'description'}
         onClick={onClick}
       />
-      <ProcessNavLink label="コマンド">
+      <ProcessNavLink label="コマンド実行">
         <ProcessNavLink
           label="コマンドを実行"
           process="execute-command"
@@ -60,6 +60,14 @@ const ProcessListSidePanel: React.FC = () => {
           label="バックエンドから返されたエラーを処理"
           process="maybe-error"
           active={currentProcess === 'maybe-error'}
+          onClick={onClick}
+        />
+      </ProcessNavLink>
+      <ProcessNavLink label="ファイル操作">
+        <ProcessNavLink
+          label="ファイルを読み込み"
+          process="read-file-content"
+          active={currentProcess === 'read-file-content'}
           onClick={onClick}
         />
       </ProcessNavLink>
