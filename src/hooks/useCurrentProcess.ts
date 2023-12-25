@@ -7,7 +7,8 @@ export type ProcessIdentifier =
   | 'maybe-error'
   | 'read-file-content'
   | 'write-file-content'
-  | 'open-file-dialog';
+  | 'open-dialog'
+  | 'save-dialog';
 
 export type CurrentProcess = {
   currentProcess: ProcessIdentifier;

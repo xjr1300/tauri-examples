@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
-import { DialogFilter, open } from '@tauri-apps/api/dialog';
+import { DialogFilter, save } from '@tauri-apps/api/dialog';
 import {
   Button,
-  Checkbox,
   Grid,
   Group,
   Text,
@@ -13,37 +12,15 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
-// フロントエンドでダイアログを開く。
-//
-// 使用するダイアログについて、`tauri.conf.json`ファイルでダイアログの使用を許可しなければならない。
-// 許可していない場合、次のエラーが発生する。
-// `Unhandled Promise Rejection: The `Dialog` module is not enabled.`
-//
-// ```json
-// {
-//   "tauri": {
-//     "allowlist": {
-//       "dialog": {
-//         "all": true, // enable all dialog APIs
-//         "ask": true, // enable dialog ask API
-//         "confirm": true, // enable dialog confirm API
-//         "message": true, // enable dialog message API
-//         "open": true, // enable file open API
-//         "save": true // enable file save API
-//       }
-//     }
-//   }
-// }
-// ```
-const OpenFileDialog: React.FC = () => {
+// ドキュメントには「Open a file/directory save dialog」とあるがディレクトリは選択できない（ようである（in macOS）。）。
+// `SaveDialogOptions`に`OpenDialogOptions`にあった`directory`プロパティがない。
+const SaveDialog: React.FC = () => {
   const form = useForm({
     initialValues: {
       defaultPath: '',
-      directory: false,
       filterName: '',
       filterExtensions: '',
-      multiple: false,
-      title: 'ファイルを開く',
+      title: 'ファイルを保存',
     },
   });
   const [selectedPath, setSelectedPath] = useState('');
@@ -59,15 +36,11 @@ const OpenFileDialog: React.FC = () => {
           );
           const options = {
             defaultPath,
-            directory: values.directory,
             filters,
-            multiple: values.multiple,
             title: values.title,
           };
-          const result = await open(options);
-          if (Array.isArray(result)) {
-            setSelectedPath(result.join(', '));
-          } else if (typeof result === 'string') {
+          const result = await save(options);
+          if (typeof result === 'string') {
             setSelectedPath(result);
           }
         })}
@@ -77,12 +50,6 @@ const OpenFileDialog: React.FC = () => {
           label="デフォルトのパス"
           placeholder="デフォルトのパスを入力してください。"
           {...form.getInputProps('defaultPath')}
-        />
-        <Checkbox
-          name="directory"
-          label="ディレクトリを選択"
-          mt="sm"
-          {...form.getInputProps('directory')}
         />
         <Text size="xs" fw="bold" mt="sm">
           フィルタ
@@ -105,12 +72,6 @@ const OpenFileDialog: React.FC = () => {
             />
           </Grid.Col>
         </Grid>
-        <Checkbox
-          name="multiple"
-          label="複数選択"
-          mt="sm"
-          {...form.getInputProps('multiple')}
-        />
         <TextInput
           name="title"
           label="タイトル"
@@ -129,12 +90,12 @@ const OpenFileDialog: React.FC = () => {
             画像フィルタを設定
           </Button>
           <Button type="submit" variant="filled">
-            ファイルを開く
+            ファイルを保存
           </Button>
         </Group>
       </form>
       <ReadOnlyTextarea
-        label="選択されたパス (複数選択した場合はカンマ区切りで出力)"
+        label="選択されたパス"
         autosize
         minRows={1}
         defaultValue={selectedPath}
@@ -171,4 +132,4 @@ const retrieveDialogFilters = (
   ];
 };
 
-export default OpenFileDialog;
+export default SaveDialog;
