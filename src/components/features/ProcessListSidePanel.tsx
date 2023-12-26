@@ -57,7 +57,7 @@ const ProcessListSidePanel: React.FC = () => {
           onClick={onClick}
         />
         <ProcessNavLink
-          label="バックエンドから返されたエラーを処理"
+          label="バックエンドが返したエラーを処理"
           process="maybe-error"
           active={currentProcess === 'maybe-error'}
           onClick={onClick}
