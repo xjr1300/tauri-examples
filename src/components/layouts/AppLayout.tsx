@@ -7,18 +7,21 @@ import {
   CurrentProcessContext,
   ProcessIdentifier,
 } from '../../hooks/useCurrentProcess';
-import ProcessListSidePanel from '../features/ProcessListSidePanel';
-import Description from '../features/Description';
-import ExecuteCommand from '../features/commands/ExecuteCommand';
-import ExecuteCommandJson from '../features/commands/ExecuteCommandJson';
-import MaybeError from '../features/commands/MaybeError';
-import ReadFileContent from '../features/files/ReadFileContent';
-import WriteFileContent from '../features/files/WriteFileContent';
-import OpenDialog from '../features/dialogs/OpenDialog';
-import SaveDialog from '../features/dialogs/SaveDialog';
-import MessageDialog from '../features/dialogs/MessageDialog';
-import ConfirmDialog from '../features/dialogs/ConfirmDialog';
-import AskDialog from '../features/dialogs/AskDialog';
+import ProcessListSidePanel from '../ProcessListSidePanel';
+import Description from '../Description';
+import ExecuteCommand from '../commands/ExecuteCommand';
+import ExecuteCommandJson from '../commands/ExecuteCommandJson';
+import MaybeError from '../commands/MaybeError';
+import ReadFileContent from '../files/ReadFileContent';
+import WriteFileContent from '../files/WriteFileContent';
+import OpenDialog from '../dialogs/OpenDialog';
+import SaveDialog from '../dialogs/SaveDialog';
+import MessageDialog from '../dialogs/MessageDialog';
+import ConfirmDialog from '../dialogs/ConfirmDialog';
+import AskDialog from '../dialogs/AskDialog';
+import Clipboard from '../Clipboard';
+import Notification from '../Notification';
+import OS from '../OS';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
@@ -42,6 +45,12 @@ const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
       return <ConfirmDialog />;
     case 'ask-dialog':
       return <AskDialog />;
+    case 'clipboard':
+      return <Clipboard />;
+    case 'notification':
+      return <Notification />;
+    case 'os':
+      return <OS />;
     default:
       return <Description />;
   }

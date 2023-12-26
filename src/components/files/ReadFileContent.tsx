@@ -83,7 +83,6 @@ const ReadFileContent: React.FC = () => {
       </StyledButton>
       <Divider size="xs" mt="sm" />
       <Textarea
-        name="fileContent"
         variant="unstyled"
         placeholder="ここにファイルの内容を表示します。"
         autosize

@@ -25,6 +25,15 @@
       },
       "dialog": {
         "all": true
+      },
+      "clipboard": {
+        "all": true
+      },
+      "notification": {
+        "all": true
+      },
+      "os": {
+        "all": true
       }
     },
     "bundle": {
