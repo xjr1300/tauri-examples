@@ -7,12 +7,20 @@ import {
 
 export const ReadOnlyTextInput: React.FC<TextInputProps> = ({ ...props }) => {
   return (
-    <TextInput styles={{ input: { backgroundColor: '#f5f5f5' } }} {...props} />
+    <TextInput
+      readOnly
+      styles={{ input: { backgroundColor: '#f5f5f5' } }}
+      {...props}
+    />
   );
 };
 
 export const ReadOnlyTextarea: React.FC<TextareaProps> = ({ ...props }) => {
   return (
-    <Textarea styles={{ input: { backgroundColor: '#f5f5f5' } }} {...props} />
+    <Textarea
+      readOnly
+      styles={{ input: { backgroundColor: '#f5f5f5' } }}
+      {...props}
+    />
   );
 };
