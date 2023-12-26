@@ -117,14 +117,18 @@ const ProcessListSidePanel: React.FC = () => {
           onClick={onClick}
         />
       </ProcessNavLink>
-      <ProcessNavLink label="通知" defaultOpened>
-        <ProcessNavLink
-          label="通知を送信"
-          process="notification"
-          active={currentProcess === 'notification'}
-          onClick={onClick}
-        />
-      </ProcessNavLink>
+      <ProcessNavLink
+        label="通知を送信"
+        process="notification"
+        active={currentProcess === 'notification'}
+        onClick={onClick}
+      />
+      <ProcessNavLink
+        label="OSの情報を取得"
+        process="os"
+        active={currentProcess === 'os'}
+        onClick={onClick}
+      />
     </>
   );
 };
