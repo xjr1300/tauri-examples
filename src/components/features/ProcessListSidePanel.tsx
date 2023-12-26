@@ -96,6 +96,12 @@ const ProcessListSidePanel: React.FC = () => {
           active={currentProcess === 'message-dialog'}
           onClick={onClick}
         />
+        <ProcessNavLink
+          label="確認ダイアログを開く"
+          process="confirm-dialog"
+          active={currentProcess === 'confirm-dialog'}
+          onClick={onClick}
+        />
       </ProcessNavLink>
     </>
   );

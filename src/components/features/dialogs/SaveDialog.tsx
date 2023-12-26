@@ -3,11 +3,8 @@ import React, { useState } from 'react';
 import { save } from '@tauri-apps/api/dialog';
 import { Button, Grid, Group, Text, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import {
-  ReadOnlyTextarea,
-  retrieveDefaultPath,
-  retrieveDialogFilters,
-} from './utils';
+import { ReadOnlyTextarea } from '../../atoms/readonly';
+import { retrieveDefaultPath, retrieveDialogFilters } from './utils';
 
 // ドキュメントには「Open a file/directory save dialog」とあるがディレクトリは選択できない（ようである（in macOS）。）。
 // `SaveDialogOptions`に`OpenDialogOptions`にあった`directory`プロパティがない。
