@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { readText, writeText } from '@tauri-apps/api/clipboard';
 import { Flex, TextInput, Button } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { ReadOnlyTextInput } from '../atoms/readonly';
+import { ReadOnlyTextInput } from './atoms/readonly';
 
 // クリップボードを経由して、コピー & ペーストする。
 //

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { open } from '@tauri-apps/api/dialog';
 import { Button, Checkbox, Grid, Group, Text, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { ReadOnlyTextarea } from '../../atoms/readonly';
+import { ReadOnlyTextarea } from '../atoms/readonly';
 import { retrieveDefaultPath, retrieveDialogFilters } from './utils';
 
 // フロントエンドでダイアログを開く。

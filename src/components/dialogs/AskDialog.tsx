@@ -4,7 +4,7 @@ import { ConfirmDialogOptions, ask } from '@tauri-apps/api/dialog';
 import { Button, Flex, Select, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { retrieveOptionalMessageType } from './utils';
-import { ReadOnlyTextInput } from '../../atoms/readonly';
+import { ReadOnlyTextInput } from '../atoms/readonly';
 
 // 質問ダイアログを表示する。
 //

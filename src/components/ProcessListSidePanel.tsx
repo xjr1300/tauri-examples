@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import {
   CurrentProcessContext,
   ProcessIdentifier,
-} from '../../hooks/useCurrentProcess';
+} from '../hooks/useCurrentProcess';
 
 interface ProcessNavLinkProps extends NavLinkProps {
   process?: ProcessIdentifier;
