@@ -37,7 +37,6 @@ const WriteFileContent: React.FC = () => {
       })}
     >
       <Textarea
-        name="fileContent"
         label="ファイルに書き込む内容"
         autosize
         minRows={6}

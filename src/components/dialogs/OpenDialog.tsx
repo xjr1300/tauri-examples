@@ -72,13 +72,11 @@ const OpenDialog: React.FC = () => {
         })}
       >
         <TextInput
-          name="defaultPath"
           label="デフォルトのパス"
           placeholder="デフォルトのパスを入力してください。"
           {...form.getInputProps('defaultPath')}
         />
         <Checkbox
-          name="directory"
           label="ディレクトリを選択"
           mt="sm"
           {...form.getInputProps('directory')}
@@ -89,7 +87,6 @@ const OpenDialog: React.FC = () => {
         <Grid>
           <Grid.Col span={4}>
             <TextInput
-              name="filterName"
               label="名前"
               placeholder="名前を入力してください。"
               {...form.getInputProps('filterName')}
@@ -97,7 +94,6 @@ const OpenDialog: React.FC = () => {
           </Grid.Col>
           <Grid.Col span={8}>
             <TextInput
-              name="filterExtensions"
               label="拡張子 (カンマ区切り)"
               placeholder="拡張子をカンマ区切りで入力してください。"
               {...form.getInputProps('filterExtensions')}
@@ -105,13 +101,11 @@ const OpenDialog: React.FC = () => {
           </Grid.Col>
         </Grid>
         <Checkbox
-          name="multiple"
           label="複数選択"
           mt="sm"
           {...form.getInputProps('multiple')}
         />
         <TextInput
-          name="title"
           label="タイトル"
           placeholder="タイトルを入力してください。"
           mt="sm"

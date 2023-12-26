@@ -39,20 +39,17 @@ const ConfirmDialog: React.FC = () => {
         })}
       >
         <TextInput
-          name="title"
           label="タイトル"
           placeholder="タイトルを入力してください。"
           {...form.getInputProps('title')}
         />
         <TextInput
-          name="message"
           label="メッセージ"
           placeholder="ダイアログに表示するメッセージを入力してください。"
           mt="sm"
           {...form.getInputProps('message')}
         />
         <Select
-          name="type"
           label="ダイアログの種類"
           data={[
             { value: 'info', label: '情報' },
@@ -61,16 +58,15 @@ const ConfirmDialog: React.FC = () => {
           ]}
           clearable
           mt="sm"
+          {...form.getInputProps('type')}
         />
         <TextInput
-          name="okLabel"
           label="OKボタンラベル"
           placeholder="OKボタンのラベルを入力してください。"
           mt="sm"
           {...form.getInputProps('okLabel')}
         />
         <TextInput
-          name="cancelLabel"
           label="キャンセルボタンラベル"
           placeholder="キャンセルボタンのラベルを入力してください。"
           mt="sm"

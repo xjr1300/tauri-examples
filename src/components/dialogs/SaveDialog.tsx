@@ -40,7 +40,6 @@ const SaveDialog: React.FC = () => {
         })}
       >
         <TextInput
-          name="defaultPath"
           label="デフォルトのパス"
           placeholder="デフォルトのパスを入力してください。"
           {...form.getInputProps('defaultPath')}
@@ -51,7 +50,6 @@ const SaveDialog: React.FC = () => {
         <Grid>
           <Grid.Col span={4}>
             <TextInput
-              name="filterName"
               label="名前"
               placeholder="名前を入力してください。"
               {...form.getInputProps('filterName')}
@@ -59,7 +57,6 @@ const SaveDialog: React.FC = () => {
           </Grid.Col>
           <Grid.Col span={8}>
             <TextInput
-              name="filterExtensions"
               label="拡張子 (カンマ区切り)"
               placeholder="拡張子をカンマ区切りで入力してください。"
               {...form.getInputProps('filterExtensions')}
@@ -67,7 +64,6 @@ const SaveDialog: React.FC = () => {
           </Grid.Col>
         </Grid>
         <TextInput
-          name="title"
           label="タイトル"
           placeholder="タイトルを入力してください。"
           mt="sm"
