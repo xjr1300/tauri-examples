@@ -18,6 +18,7 @@ import OpenDialog from '../features/dialogs/OpenDialog';
 import SaveDialog from '../features/dialogs/SaveDialog';
 import MessageDialog from '../features/dialogs/MessageDialog';
 import ConfirmDialog from '../features/dialogs/ConfirmDialog';
+import AskDialog from '../features/dialogs/AskDialog';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
@@ -39,6 +40,8 @@ const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
       return <MessageDialog />;
     case 'confirm-dialog':
       return <ConfirmDialog />;
+    case 'ask-dialog':
+      return <AskDialog />;
     default:
       return <Description />;
   }

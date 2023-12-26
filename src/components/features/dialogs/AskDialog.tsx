@@ -1,16 +1,15 @@
 import { useState } from 'react';
 
-import { ConfirmDialogOptions, confirm } from '@tauri-apps/api/dialog';
+import { ConfirmDialogOptions, ask } from '@tauri-apps/api/dialog';
 import { Button, Flex, Select, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { retrieveOptionalMessageType } from './utils';
 import { ReadOnlyTextInput } from '../../atoms/readonly';
 
-// 確認ダイアログを表示する。
+// 質問ダイアログを表示する。
 //
-// macOSでは、ダイアログの種類を変更しても、ダイアログの表示は変わらない。
-// UIフレームワークを利用して、独自ダイアログを表示した方が良い。
-const ConfirmDialog: React.FC = () => {
+// 確認ダイアログと同様の機能を提供する。
+const AskDialog: React.FC = () => {
   const [dialogResult, setDialogResult] = useState('');
   const form = useForm({
     initialValues: {
@@ -32,7 +31,7 @@ const ConfirmDialog: React.FC = () => {
             okLabel: values.okLabel,
             cancelLabel: values.cancelLabel,
           };
-          let result = await confirm(values.message, { ...options });
+          let result = await ask(values.message, { ...options });
           setDialogResult(
             result ? 'OKが押されました。' : 'キャンセルが押されました。'
           );
@@ -88,4 +87,4 @@ const ConfirmDialog: React.FC = () => {
   );
 };
 
-export default ConfirmDialog;
+export default AskDialog;
