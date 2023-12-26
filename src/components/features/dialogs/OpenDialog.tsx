@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 
-import { DialogFilter, open } from '@tauri-apps/api/dialog';
-import {
-  Button,
-  Checkbox,
-  Grid,
-  Group,
-  Text,
-  TextInput,
-  Textarea,
-  TextareaProps,
-} from '@mantine/core';
+import { open } from '@tauri-apps/api/dialog';
+import { Button, Checkbox, Grid, Group, Text, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { ReadOnlyTextarea } from '../../atoms/readonly';
+import { retrieveDefaultPath, retrieveDialogFilters } from './utils';
 
 // フロントエンドでダイアログを開く。
 //
@@ -35,7 +28,13 @@ import { useForm } from '@mantine/form';
 //   }
 // }
 // ```
-const OpenFileDialog: React.FC = () => {
+// ファイル／ディレクトリ選択ダイアログを表示する。
+// 選択されたパスはファイルシステムとアセットプロトコルの許可リストスコープに追加される。
+// このAPIの使用の容易さよりもセキュリティが重要な場合は、代わりに専用のコマンドを記述することが推奨されている。
+// 許可リストスコープの変更は持続しないため、その値はアプリケーションが再起動されたときクリアされる。
+// [tauri-plugin-persisted-scope](https://github.com/tauri-apps/plugins-workspace/tree/v1/plugins/persisted-scope)
+// を使用すると、それをファイルシステムに保存できる。
+const OpenDialog: React.FC = () => {
   const form = useForm({
     initialValues: {
       defaultPath: '',
@@ -144,31 +143,4 @@ const OpenFileDialog: React.FC = () => {
   );
 };
 
-const ReadOnlyTextarea: React.FC<TextareaProps> = ({ ...props }) => {
-  return (
-    <Textarea styles={{ input: { backgroundColor: '#f5f5f5' } }} {...props} />
-  );
-};
-
-const retrieveDefaultPath = (defaultPath: string): string | undefined => {
-  return defaultPath.trim().length > 0 ? defaultPath.trim() : undefined;
-};
-
-const retrieveDialogFilters = (
-  filterName: string,
-  filterExtensions: string
-): [DialogFilter] | undefined => {
-  if (filterName.trim().length === 0) return undefined;
-  if (filterExtensions.trim().length === 0) return undefined;
-  const extensions = filterExtensions.split(',');
-  if (!Array.isArray(extensions)) return undefined;
-  if (extensions.length === 0) return undefined;
-  return [
-    {
-      name: filterName,
-      extensions: extensions,
-    },
-  ];
-};
-
-export default OpenFileDialog;
+export default OpenDialog;

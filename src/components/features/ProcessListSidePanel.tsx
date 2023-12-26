@@ -57,7 +57,7 @@ const ProcessListSidePanel: React.FC = () => {
           onClick={onClick}
         />
         <ProcessNavLink
-          label="バックエンドから返されたエラーを処理"
+          label="バックエンドが返したエラーを処理"
           process="maybe-error"
           active={currentProcess === 'maybe-error'}
           onClick={onClick}
@@ -79,9 +79,33 @@ const ProcessListSidePanel: React.FC = () => {
       </ProcessNavLink>
       <ProcessNavLink label="ダイアログ操作" defaultOpened>
         <ProcessNavLink
-          label="オープンファイルダイアログを開く"
-          process="open-file-dialog"
-          active={currentProcess === 'open-file-dialog'}
+          label="オープンダイアログを開く"
+          process="open-dialog"
+          active={currentProcess === 'open-dialog'}
+          onClick={onClick}
+        />
+        <ProcessNavLink
+          label="セーブダイアログを開く"
+          process="save-dialog"
+          active={currentProcess === 'save-dialog'}
+          onClick={onClick}
+        />
+        <ProcessNavLink
+          label="メッセージダイアログを開く"
+          process="message-dialog"
+          active={currentProcess === 'message-dialog'}
+          onClick={onClick}
+        />
+        <ProcessNavLink
+          label="確認ダイアログを開く"
+          process="confirm-dialog"
+          active={currentProcess === 'confirm-dialog'}
+          onClick={onClick}
+        />
+        <ProcessNavLink
+          label="質問ダイアログを開く"
+          process="ask-dialog"
+          active={currentProcess === 'ask-dialog'}
           onClick={onClick}
         />
       </ProcessNavLink>

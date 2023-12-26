@@ -9,12 +9,16 @@ import {
 } from '../../hooks/useCurrentProcess';
 import ProcessListSidePanel from '../features/ProcessListSidePanel';
 import Description from '../features/Description';
-import ExecuteCommand from '../features/executeCommands/ExecuteCommand';
-import ExecuteCommandJson from '../features/executeCommands/ExecuteCommandJson';
-import MaybeError from '../features/executeCommands/MaybeError';
-import ReadFileContent from '../features/fileOperations/ReadFileContent';
-import WriteFileContent from '../features/fileOperations/WriteFileContent';
-import OpenFileDialog from '../features/dialogOperations/OpenFileDialog';
+import ExecuteCommand from '../features/commands/ExecuteCommand';
+import ExecuteCommandJson from '../features/commands/ExecuteCommandJson';
+import MaybeError from '../features/commands/MaybeError';
+import ReadFileContent from '../features/files/ReadFileContent';
+import WriteFileContent from '../features/files/WriteFileContent';
+import OpenDialog from '../features/dialogs/OpenDialog';
+import SaveDialog from '../features/dialogs/SaveDialog';
+import MessageDialog from '../features/dialogs/MessageDialog';
+import ConfirmDialog from '../features/dialogs/ConfirmDialog';
+import AskDialog from '../features/dialogs/AskDialog';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
@@ -28,8 +32,16 @@ const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
       return <ReadFileContent />;
     case 'write-file-content':
       return <WriteFileContent />;
-    case 'open-file-dialog':
-      return <OpenFileDialog />;
+    case 'open-dialog':
+      return <OpenDialog />;
+    case 'save-dialog':
+      return <SaveDialog />;
+    case 'message-dialog':
+      return <MessageDialog />;
+    case 'confirm-dialog':
+      return <ConfirmDialog />;
+    case 'ask-dialog':
+      return <AskDialog />;
     default:
       return <Description />;
   }
