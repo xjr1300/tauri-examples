@@ -19,6 +19,7 @@ import SaveDialog from '../features/dialogs/SaveDialog';
 import MessageDialog from '../features/dialogs/MessageDialog';
 import ConfirmDialog from '../features/dialogs/ConfirmDialog';
 import AskDialog from '../features/dialogs/AskDialog';
+import Clipboard from '../features/Clipboard';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
@@ -42,6 +43,8 @@ const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
       return <ConfirmDialog />;
     case 'ask-dialog':
       return <AskDialog />;
+    case 'clipboard':
+      return <Clipboard />;
     default:
       return <Description />;
   }
