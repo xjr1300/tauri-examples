@@ -109,6 +109,14 @@ const ProcessListSidePanel: React.FC = () => {
           onClick={onClick}
         />
       </ProcessNavLink>
+      <ProcessNavLink label="クリップボード操作" defaultOpened>
+        <ProcessNavLink
+          label="コピー & ペースト"
+          process="clipboard"
+          active={currentProcess === 'clipboard'}
+          onClick={onClick}
+        />
+      </ProcessNavLink>
     </>
   );
 };
