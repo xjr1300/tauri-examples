@@ -1,11 +1,4 @@
-import { Textarea, TextareaProps } from '@mantine/core';
 import { DialogFilter } from '@tauri-apps/api/dialog';
-
-export const ReadOnlyTextarea: React.FC<TextareaProps> = ({ ...props }) => {
-  return (
-    <Textarea styles={{ input: { backgroundColor: '#f5f5f5' } }} {...props} />
-  );
-};
 
 export const retrieveDefaultPath = (
   defaultPath: string
@@ -28,4 +21,14 @@ export const retrieveDialogFilters = (
       extensions: extensions,
     },
   ];
+};
+
+export const retrieveOptionalMessageType = (
+  value: string | undefined
+): 'info' | 'warning' | 'error' | undefined => {
+  if (value === null) return undefined;
+  if (value === '') return undefined;
+  if (['info', 'warning', 'error'].includes(value!))
+    return value as 'info' | 'warning' | 'error' | undefined;
+  return undefined;
 };

@@ -9,7 +9,8 @@ export type ProcessIdentifier =
   | 'write-file-content'
   | 'open-dialog'
   | 'save-dialog'
-  | 'message-dialog';
+  | 'message-dialog'
+  | 'confirm-dialog';
 
 export type CurrentProcess = {
   currentProcess: ProcessIdentifier;
