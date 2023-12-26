@@ -21,6 +21,7 @@ import ConfirmDialog from '../dialogs/ConfirmDialog';
 import AskDialog from '../dialogs/AskDialog';
 import Clipboard from '../Clipboard';
 import Notification from '../Notification';
+import OS from '../OS';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
@@ -48,6 +49,8 @@ const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
       return <Clipboard />;
     case 'notification':
       return <Notification />;
+    case 'os':
+      return <OS />;
     default:
       return <Description />;
   }
