@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 
-import { DialogFilter, save } from '@tauri-apps/api/dialog';
-import {
-  Button,
-  Grid,
-  Group,
-  Text,
-  TextInput,
-  Textarea,
-  TextareaProps,
-} from '@mantine/core';
+import { save } from '@tauri-apps/api/dialog';
+import { Button, Grid, Group, Text, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import {
+  ReadOnlyTextarea,
+  retrieveDefaultPath,
+  retrieveDialogFilters,
+} from './utils';
 
 // ドキュメントには「Open a file/directory save dialog」とあるがディレクトリは選択できない（ようである（in macOS）。）。
 // `SaveDialogOptions`に`OpenDialogOptions`にあった`directory`プロパティがない。
@@ -103,33 +100,6 @@ const SaveDialog: React.FC = () => {
       />
     </>
   );
-};
-
-const ReadOnlyTextarea: React.FC<TextareaProps> = ({ ...props }) => {
-  return (
-    <Textarea styles={{ input: { backgroundColor: '#f5f5f5' } }} {...props} />
-  );
-};
-
-const retrieveDefaultPath = (defaultPath: string): string | undefined => {
-  return defaultPath.trim().length > 0 ? defaultPath.trim() : undefined;
-};
-
-const retrieveDialogFilters = (
-  filterName: string,
-  filterExtensions: string
-): [DialogFilter] | undefined => {
-  if (filterName.trim().length === 0) return undefined;
-  if (filterExtensions.trim().length === 0) return undefined;
-  const extensions = filterExtensions.split(',');
-  if (!Array.isArray(extensions)) return undefined;
-  if (extensions.length === 0) return undefined;
-  return [
-    {
-      name: filterName,
-      extensions: extensions,
-    },
-  ];
 };
 
 export default SaveDialog;
