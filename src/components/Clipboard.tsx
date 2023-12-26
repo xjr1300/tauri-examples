@@ -51,7 +51,6 @@ const Clipboard: React.FC = () => {
       })}
     >
       <TextInput
-        name="text"
         label="クリップボードにコピーするテキスト"
         placeholder="クリップボードにコピーするテキストを入力してください。"
         {...form.getInputProps('text')}
@@ -65,7 +64,6 @@ const Clipboard: React.FC = () => {
         </Button>
       </Flex>
       <ReadOnlyTextInput
-        name="target"
         label="クリップボードの内容"
         defaultValue={pasteText}
         mt="sm"

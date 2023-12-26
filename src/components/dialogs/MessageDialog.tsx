@@ -31,20 +31,17 @@ const MessageDialog: React.FC = () => {
         })}
       >
         <TextInput
-          name="title"
           label="タイトル"
           placeholder="タイトルを入力してください。"
           {...form.getInputProps('title')}
         />
         <TextInput
-          name="message"
           label="メッセージ"
           placeholder="ダイアログに表示するメッセージを入力してください。"
           mt="sm"
           {...form.getInputProps('message')}
         />
         <Select
-          name="type"
           label="ダイアログの種類"
           data={[
             { value: 'info', label: '情報' },
@@ -52,10 +49,10 @@ const MessageDialog: React.FC = () => {
             { value: 'error', label: 'エラー' },
           ]}
           clearable
+          {...form.getInputProps('type')}
           mt="sm"
         />
         <TextInput
-          name="okLabel"
           label="OKボタンラベル"
           placeholder="OKボタンのラベルを入力してください。"
           mt="sm"
