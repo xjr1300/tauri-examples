@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 
-import { DialogFilter, open } from '@tauri-apps/api/dialog';
-import {
-  Button,
-  Checkbox,
-  Grid,
-  Group,
-  Text,
-  TextInput,
-  Textarea,
-  TextareaProps,
-} from '@mantine/core';
+import { open } from '@tauri-apps/api/dialog';
+import { Button, Checkbox, Grid, Group, Text, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import {
+  ReadOnlyTextarea,
+  retrieveDefaultPath,
+  retrieveDialogFilters,
+} from './utils';
 
 // フロントエンドでダイアログを開く。
 //
@@ -148,33 +144,6 @@ const OpenDialog: React.FC = () => {
       />
     </>
   );
-};
-
-const ReadOnlyTextarea: React.FC<TextareaProps> = ({ ...props }) => {
-  return (
-    <Textarea styles={{ input: { backgroundColor: '#f5f5f5' } }} {...props} />
-  );
-};
-
-const retrieveDefaultPath = (defaultPath: string): string | undefined => {
-  return defaultPath.trim().length > 0 ? defaultPath.trim() : undefined;
-};
-
-const retrieveDialogFilters = (
-  filterName: string,
-  filterExtensions: string
-): [DialogFilter] | undefined => {
-  if (filterName.trim().length === 0) return undefined;
-  if (filterExtensions.trim().length === 0) return undefined;
-  const extensions = filterExtensions.split(',');
-  if (!Array.isArray(extensions)) return undefined;
-  if (extensions.length === 0) return undefined;
-  return [
-    {
-      name: filterName,
-      extensions: extensions,
-    },
-  ];
 };
 
 export default OpenDialog;
