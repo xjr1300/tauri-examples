@@ -10,7 +10,8 @@ export type ProcessIdentifier =
   | 'open-dialog'
   | 'save-dialog'
   | 'message-dialog'
-  | 'confirm-dialog';
+  | 'confirm-dialog'
+  | 'ask-dialog';
 
 export type CurrentProcess = {
   currentProcess: ProcessIdentifier;
