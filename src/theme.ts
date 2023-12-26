@@ -57,7 +57,7 @@ export const theme = createTheme({
     Checkbox: Checkbox.extend({
       defaultProps: {
         size: 'xs',
-        variant: 'outline',
+        radius: 0,
       },
     }),
     Select: Select.extend({

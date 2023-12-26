@@ -28,6 +28,9 @@
       },
       "clipboard": {
         "all": true
+      },
+      "notification": {
+        "all": true
       }
     },
     "bundle": {

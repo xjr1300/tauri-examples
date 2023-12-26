@@ -12,7 +12,8 @@ export type ProcessIdentifier =
   | 'message-dialog'
   | 'confirm-dialog'
   | 'ask-dialog'
-  | 'clipboard';
+  | 'clipboard'
+  | 'notification';
 
 export type CurrentProcess = {
   currentProcess: ProcessIdentifier;
