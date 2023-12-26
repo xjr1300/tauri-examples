@@ -41,7 +41,6 @@ const AskDialog: React.FC = () => {
           name="title"
           label="タイトル"
           placeholder="タイトルを入力してください。"
-          mt="sm"
           {...form.getInputProps('title')}
         />
         <TextInput
