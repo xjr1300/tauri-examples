@@ -1,9 +1,9 @@
 import { Text, TextProps } from '@mantine/core';
 
-interface SemiBoldTextProps extends TextProps {
+interface ItemLabelProps extends TextProps {
   children?: React.ReactNode;
 }
-const ItemLabel: React.FC<SemiBoldTextProps> = ({ ...props }) => {
+const ItemLabel: React.FC<ItemLabelProps> = ({ ...props }) => {
   return (
     <Text size="xs" fw={700} {...props}>
       {props.children}
