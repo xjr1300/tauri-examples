@@ -43,7 +43,7 @@ const ProcessListSidePanel: React.FC = () => {
         active={currentProcess === 'description'}
         onClick={onClick}
       />
-      <ProcessNavLink label="コマンド実行" defaultOpened>
+      <ProcessNavLink label="コマンド" defaultOpened>
         <ProcessNavLink
           label="コマンドを実行"
           process="execute-command"
@@ -63,7 +63,7 @@ const ProcessListSidePanel: React.FC = () => {
           onClick={onClick}
         />
       </ProcessNavLink>
-      <ProcessNavLink label="ファイル操作" defaultOpened>
+      <ProcessNavLink label="ファイル" defaultOpened>
         <ProcessNavLink
           label="ファイルを読み込み"
           process="read-file-content"
@@ -77,7 +77,7 @@ const ProcessListSidePanel: React.FC = () => {
           onClick={onClick}
         />
       </ProcessNavLink>
-      <ProcessNavLink label="ダイアログ操作" defaultOpened>
+      <ProcessNavLink label="ダイアログ" defaultOpened>
         <ProcessNavLink
           label="オープンダイアログを開く"
           process="open-dialog"
@@ -109,11 +109,19 @@ const ProcessListSidePanel: React.FC = () => {
           onClick={onClick}
         />
       </ProcessNavLink>
-      <ProcessNavLink label="クリップボード操作" defaultOpened>
+      <ProcessNavLink label="クリップボード" defaultOpened>
         <ProcessNavLink
           label="コピー & ペースト"
           process="clipboard"
           active={currentProcess === 'clipboard'}
+          onClick={onClick}
+        />
+      </ProcessNavLink>
+      <ProcessNavLink label="通知" defaultOpened>
+        <ProcessNavLink
+          label="通知を送信"
+          process="notification"
+          active={currentProcess === 'notification'}
           onClick={onClick}
         />
       </ProcessNavLink>

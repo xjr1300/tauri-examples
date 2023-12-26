@@ -1,4 +1,6 @@
 import {
+  Checkbox,
+  CheckboxProps,
   TextInput,
   TextInputProps,
   Textarea,
@@ -23,4 +25,8 @@ export const ReadOnlyTextarea: React.FC<TextareaProps> = ({ ...props }) => {
       {...props}
     />
   );
+};
+
+export const ReadOnlyCheckbox: React.FC<CheckboxProps> = ({ ...props }) => {
+  return <Checkbox readOnly onChange={() => {}} {...props} />;
 };

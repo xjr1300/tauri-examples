@@ -20,6 +20,7 @@ import MessageDialog from '../dialogs/MessageDialog';
 import ConfirmDialog from '../dialogs/ConfirmDialog';
 import AskDialog from '../dialogs/AskDialog';
 import Clipboard from '../Clipboard';
+import Notification from '../Notification';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
@@ -45,6 +46,8 @@ const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
       return <AskDialog />;
     case 'clipboard':
       return <Clipboard />;
+    case 'notification':
+      return <Notification />;
     default:
       return <Description />;
   }
