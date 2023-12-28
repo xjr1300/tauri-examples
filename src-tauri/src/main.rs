@@ -3,9 +3,11 @@
 
 use tauri_examples::process::execute_command_json::{ExecuteCommandArgs, ExecuteCommandResult};
 use tauri_examples::process::maybe_error::MaybeError;
+use tauri_examples::state::EditorSettingsWrapper;
 
 fn main() {
     tauri::Builder::default()
+        .manage(EditorSettingsWrapper(Default::default()))
         .invoke_handler(tauri::generate_handler![
             execute_command,
             execute_command_json,
