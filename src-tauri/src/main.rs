@@ -1,20 +1,39 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+use std::sync::{Arc, Mutex};
+
+use sqlx::SqlitePool;
 use tauri::{Manager as _, State};
 
 use tauri_examples::process::execute_command_json::{ExecuteCommandArgs, ExecuteCommandResult};
 use tauri_examples::process::maybe_error::MaybeError;
-use tauri_examples::state::{EditorSettings, EditorSettingsWrapper};
+use tauri_examples::state::EditorSettings;
 
-fn main() {
+#[tokio::main]
+async fn main() {
+    dotenvy::dotenv().expect("Failed to load .env file");
+
+    let editor_settings = EditorSettings::default();
+    let editor_settings = Mutex::new(editor_settings);
+
+    let database_url =
+        std::env::var("DATABASE_URL").expect("DATABASE_URL must be set in environment");
+    let pool = SqlitePool::connect(&database_url).await.unwrap();
+    sqlx::migrate!("./migrations")
+        .run(&pool)
+        .await
+        .expect("Failed to migrate database");
+    let pool = Arc::new(Mutex::new(pool.clone()));
+
     tauri::Builder::default()
         .setup(|app| {
             #[cfg(debug_assertions)]
             app.get_window("main").unwrap().open_devtools();
             Ok(())
         })
-        .manage(EditorSettingsWrapper(Default::default()))
+        .manage(editor_settings)
+        .manage(pool)
         .invoke_handler(tauri::generate_handler![
             execute_command,
             execute_command_json,
@@ -59,11 +78,11 @@ fn maybe_error(expected: String) -> Result<String, MaybeError> {
 
 /*-------------------- Retrieve Editor Settings --------------------*/
 #[tauri::command]
-fn retrieve_editor_settings(settings: State<'_, EditorSettingsWrapper>) -> EditorSettings {
-    settings.0.lock().unwrap().clone()
+fn retrieve_editor_settings(settings: State<'_, Mutex<EditorSettings>>) -> EditorSettings {
+    settings.lock().unwrap().clone()
 }
 
 #[tauri::command]
-fn save_editor_settings(settings: State<'_, EditorSettingsWrapper>, new_settings: EditorSettings) {
-    *settings.0.lock().unwrap() = new_settings;
+fn save_editor_settings(settings: State<'_, Mutex<EditorSettings>>, new_settings: EditorSettings) {
+    *settings.lock().unwrap() = new_settings;
 }
