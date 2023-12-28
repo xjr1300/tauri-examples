@@ -1,5 +1,3 @@
-use std::sync::Mutex;
-
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct EditorSettings {
@@ -23,5 +21,3 @@ impl Default for EditorSettings {
     }
 }
 
-#[derive(Debug, Default)]
-pub struct EditorSettingsWrapper(pub Mutex<EditorSettings>);
