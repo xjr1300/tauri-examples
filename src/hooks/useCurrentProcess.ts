@@ -14,7 +14,8 @@ export type ProcessIdentifier =
   | 'ask-dialog'
   | 'clipboard'
   | 'notification'
-  | 'os';
+  | 'os'
+  | 'state-management';
 
 export type CurrentProcess = {
   currentProcess: ProcessIdentifier;
