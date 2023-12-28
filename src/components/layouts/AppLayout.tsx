@@ -22,6 +22,7 @@ import AskDialog from '../dialogs/AskDialog';
 import Clipboard from '../Clipboard';
 import Notification from '../Notification';
 import OS from '../OS';
+import StateManagement from '../states/StateManagement';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
@@ -51,6 +52,8 @@ const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
       return <Notification />;
     case 'os':
       return <OS />;
+    case 'state-management':
+      return <StateManagement />;
     default:
       return <Description />;
   }
