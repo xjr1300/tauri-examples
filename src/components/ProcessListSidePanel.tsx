@@ -129,6 +129,14 @@ const ProcessListSidePanel: React.FC = () => {
         active={currentProcess === 'os'}
         onClick={onClick}
       />
+      <ProcessNavLink label="状態" defaultOpened>
+        <ProcessNavLink
+          label="状態管理"
+          process="state-management"
+          active={currentProcess === 'state-management'}
+          onClick={onClick}
+        />
+      </ProcessNavLink>
     </>
   );
 };
