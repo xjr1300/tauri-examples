@@ -1,7 +1,7 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use tauri::State;
+use tauri::{Manager as _, State};
 
 use tauri_examples::process::execute_command_json::{ExecuteCommandArgs, ExecuteCommandResult};
 use tauri_examples::process::maybe_error::MaybeError;
@@ -9,12 +9,18 @@ use tauri_examples::state::{EditorSettings, EditorSettingsWrapper};
 
 fn main() {
     tauri::Builder::default()
+        .setup(|app| {
+            #[cfg(debug_assertions)]
+            app.get_window("main").unwrap().open_devtools();
+            Ok(())
+        })
         .manage(EditorSettingsWrapper(Default::default()))
         .invoke_handler(tauri::generate_handler![
             execute_command,
             execute_command_json,
             maybe_error,
             retrieve_editor_settings,
+            save_editor_settings,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
@@ -55,4 +61,9 @@ fn maybe_error(expected: String) -> Result<String, MaybeError> {
 #[tauri::command]
 fn retrieve_editor_settings(settings: State<'_, EditorSettingsWrapper>) -> EditorSettings {
     settings.0.lock().unwrap().clone()
+}
+
+#[tauri::command]
+fn save_editor_settings(settings: State<'_, EditorSettingsWrapper>, new_settings: EditorSettings) {
+    *settings.0.lock().unwrap() = new_settings;
 }
