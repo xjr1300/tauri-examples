@@ -26,8 +26,16 @@ impl Default for EditorSettings {
 }
 
 #[derive(Debug, Clone, serde::Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct Vegetable {
     pub id: u32,
+    pub name: String,
+    pub price: u32,
+}
+
+#[derive(Debug, Clone, serde::Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct AdditionalVegetable {
     pub name: String,
     pub price: u32,
 }
@@ -53,4 +61,18 @@ pub async fn retrieve_vegetables(pool: &SqlitePool) -> Result<Vec<Vegetable>, DB
         .collect::<Vec<_>>();
 
     Ok(vegetables)
+}
+
+pub async fn add_vegetable(
+    pool: &SqlitePool,
+    additional_vegetable: AdditionalVegetable,
+) -> Result<(), DBError> {
+    sqlx::query("INSERT INTO green_grocer (name, price) VALUES (?, ?)")
+        .bind(additional_vegetable.name)
+        .bind(additional_vegetable.price)
+        .execute(pool)
+        .await
+        .map_err(|e| DBError::Unexpected(e.to_string().into()))?;
+
+    Ok(())
 }

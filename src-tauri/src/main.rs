@@ -9,7 +9,7 @@ use tokio::sync::Mutex as TokioMutex;
 
 use tauri_examples::process::execute_command_json::{ExecuteCommandArgs, ExecuteCommandResult};
 use tauri_examples::process::maybe_error::MaybeError;
-use tauri_examples::state::{self, DBError, EditorSettings, Vegetable};
+use tauri_examples::state::{self, AdditionalVegetable, DBError, EditorSettings, Vegetable};
 
 #[tokio::main]
 async fn main() {
@@ -42,6 +42,7 @@ async fn main() {
             retrieve_editor_settings,
             save_editor_settings,
             retrieve_all_vegetables,
+            add_vegetable,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
@@ -110,4 +111,15 @@ async fn retrieve_all_vegetables(
 
     println!("vegetables: {:?}", vegetables);
     Ok(vegetables)
+}
+
+#[tauri::command]
+async fn add_vegetable(
+    pool: State<'_, Arc<TokioMutex<SqlitePool>>>,
+    additional_vegetable: AdditionalVegetable,
+) -> Result<(), DBError> {
+    let pool = pool.lock().await;
+    state::add_vegetable(&pool, additional_vegetable).await?;
+
+    Ok(())
 }
