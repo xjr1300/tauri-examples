@@ -30,7 +30,6 @@ const StateManagement: React.FC = () => {
         value >= 0 ? null : 'タブサイズは0以上の数値を入力してください。',
     },
   });
-
   useEffect(() => {
     (async () => {
       const editorSettings = await invoke<EditorSettings>(
