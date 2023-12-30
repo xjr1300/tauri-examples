@@ -7,4 +7,4 @@ CREATE TABLE IF NOT EXISTS green_grocer (
 
 INSERT INTO green_grocer (name, price) VALUES ('にんじん', 100);
 INSERT INTO green_grocer (name, price) VALUES ('だいこん', 160);
-INSERT INTO green_grocer (name, price) VALUES ('きゅうり', 160);
+INSERT INTO green_grocer (name, price) VALUES ('きゅうり', 80);
