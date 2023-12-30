@@ -8,9 +8,12 @@ import {
   TextInput,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { notifications } from '@mantine/notifications';
 import { IconInfoCircle } from '@tabler/icons-react';
 import { invoke } from '@tauri-apps/api';
 import { useEffect, useState } from 'react';
+import { Notifications } from '@mantine/notifications';
+import '@mantine/notifications/styles.css';
 
 const DatabaseConnectionPool: React.FC = () => {
   const [vegetables, setVegetables] = useState<Vegetable[]>([]);
@@ -18,6 +21,7 @@ const DatabaseConnectionPool: React.FC = () => {
     (async () => {
       try {
         const vegetables = await invoke<Vegetable[]>('retrieve_all_vegetables');
+        console.log(vegetables);
         setVegetables(vegetables);
       } catch (e) {
         console.error(e);
@@ -40,6 +44,7 @@ const DatabaseConnectionPool: React.FC = () => {
 
   return (
     <>
+      <Notifications position="top-right" autoClose={3000} />
       <Blockquote color="blue" radius="0" icon={icon} iconSize={30}>
         データベース接続プールはステートとしてバックエンドで管理されています。
         最初はデフォルトで登録されている野菜のみを表示しますが、追加した野菜も表示されます。
@@ -66,8 +71,23 @@ const DatabaseConnectionPool: React.FC = () => {
       </Table>
       <Divider mt="sm" />
       <form
-        onSubmit={form.onSubmit((values) => {
-          console.log(values);
+        onSubmit={form.onSubmit(async (values) => {
+          try {
+            await invoke('add_vegetable', {
+              additionalVegetable: { ...values },
+            });
+            notifications.show({
+              title: '野菜を追加しました。',
+              message: `${values.name}を${values.price}円で追加しました。`,
+            });
+          } catch (e) {
+            console.log(e);
+            notifications.show({
+              title: '野菜の追加に失敗しました。',
+              message: `${e}`,
+              color: 'red',
+            });
+          }
         })}
       >
         <TextInput

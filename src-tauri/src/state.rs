@@ -40,10 +40,19 @@ pub struct AdditionalVegetable {
     pub price: u32,
 }
 
-#[derive(Debug, thiserror::Error, serde::Serialize)]
+#[derive(Debug, thiserror::Error)]
 pub enum DBError {
     #[error("{0}")]
     Unexpected(Cow<'static, str>),
+}
+
+impl serde::Serialize for DBError {
+    fn serialize<S: serde::Serializer>(&self, serializer: S) -> Result<S::Ok, S::Error> {
+        let message = match self {
+            DBError::Unexpected(message) => message,
+        };
+        serializer.serialize_str(message)
+    }
 }
 
 pub async fn retrieve_vegetables(pool: &SqlitePool) -> Result<Vec<Vegetable>, DBError> {
