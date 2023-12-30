@@ -23,6 +23,7 @@ import Clipboard from '../Clipboard';
 import Notification from '../Notification';
 import OS from '../OS';
 import StateManagement from '../states/StateManagement';
+import DatabaseConnectionPool from '../states/DatabaseConnectionPool';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
@@ -54,6 +55,8 @@ const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
       return <OS />;
     case 'state-management':
       return <StateManagement />;
+    case 'database-connection-pool':
+      return <DatabaseConnectionPool />;
     default:
       return <Description />;
   }
