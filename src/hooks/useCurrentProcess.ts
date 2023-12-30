@@ -15,7 +15,8 @@ export type ProcessIdentifier =
   | 'clipboard'
   | 'notification'
   | 'os'
-  | 'state-management';
+  | 'state-management'
+  | 'database-connection-pool';
 
 export type CurrentProcess = {
   currentProcess: ProcessIdentifier;

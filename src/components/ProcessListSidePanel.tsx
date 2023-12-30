@@ -136,6 +136,12 @@ const ProcessListSidePanel: React.FC = () => {
           active={currentProcess === 'state-management'}
           onClick={onClick}
         />
+        <ProcessNavLink
+          label="データベース接続プール"
+          process="database-connection-pool"
+          active={currentProcess === 'database-connection-pool'}
+          onClick={onClick}
+        />
       </ProcessNavLink>
     </>
   );

@@ -5,10 +5,11 @@ use std::sync::{Arc, Mutex};
 
 use sqlx::SqlitePool;
 use tauri::{Manager as _, State};
+use tokio::sync::Mutex as TokioMutex;
 
 use tauri_examples::process::execute_command_json::{ExecuteCommandArgs, ExecuteCommandResult};
 use tauri_examples::process::maybe_error::MaybeError;
-use tauri_examples::state::EditorSettings;
+use tauri_examples::state::{self, DBError, EditorSettings, Vegetable};
 
 #[tokio::main]
 async fn main() {
@@ -24,7 +25,7 @@ async fn main() {
         .run(&pool)
         .await
         .expect("Failed to migrate database");
-    let pool = Arc::new(Mutex::new(pool.clone()));
+    let pool = Arc::new(TokioMutex::new(pool.clone()));
 
     tauri::Builder::default()
         .setup(|app| {
@@ -40,6 +41,7 @@ async fn main() {
             maybe_error,
             retrieve_editor_settings,
             save_editor_settings,
+            retrieve_all_vegetables,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
@@ -85,4 +87,27 @@ fn retrieve_editor_settings(settings: State<'_, Mutex<EditorSettings>>) -> Edito
 #[tauri::command]
 fn save_editor_settings(settings: State<'_, Mutex<EditorSettings>>, new_settings: EditorSettings) {
     *settings.lock().unwrap() = new_settings;
+}
+
+/*-------------------- SQLite --------------------*/
+/// `std::sync::Mutex`は、ロックを獲得しようとするとスレッドをブロックする`ブロッキングミューテック`である。
+/// `std::sync::Mutex`をロックして得られる`MutexGuard`は`Send`でないため、スレッド間で安全に共有
+/// できないため、コンパイルできない。
+/// よって、非同期用に設計された`tokio::sync::Mutex`を使用している。
+/// `tokio::sync::Mutex`はロックしたとき、`tokio::sync::MutexGuard`を返すが、これは`Send+Sync`である。
+///
+/// ブロッキングミューテックスは、`await`ポイントを超えてガードを保持することを妨げないが、デッドロックが発生する
+/// 可能性がある。ブロッキングミューテックスは、背後にある値が単なるデータの場合に最適である。
+///
+/// 非同期ミューテックスは、背後にある値に対して非同期操作が必要な場合に使用する。非同期ミューテックスは、ロックを獲得
+/// しようとしたとき、スレッドをロックするのではなく、タスク実行プログラムに制御を返す。
+#[tauri::command]
+async fn retrieve_all_vegetables(
+    pool: State<'_, Arc<TokioMutex<SqlitePool>>>,
+) -> Result<Vec<Vegetable>, DBError> {
+    let pool = pool.lock().await;
+    let vegetables = state::retrieve_vegetables(&pool).await?;
+
+    println!("vegetables: {:?}", vegetables);
+    Ok(vegetables)
 }
