@@ -43,7 +43,7 @@ const ProcessListSidePanel: React.FC = () => {
         active={currentProcess === 'description'}
         onClick={onClick}
       />
-      <ProcessNavLink label="コマンド" defaultOpened>
+      <ProcessNavLink label="コマンド">
         <ProcessNavLink
           label="コマンドを実行"
           process="execute-command"
@@ -63,7 +63,7 @@ const ProcessListSidePanel: React.FC = () => {
           onClick={onClick}
         />
       </ProcessNavLink>
-      <ProcessNavLink label="ファイル" defaultOpened>
+      <ProcessNavLink label="ファイル">
         <ProcessNavLink
           label="ファイルを読み込み"
           process="read-file-content"
@@ -77,7 +77,7 @@ const ProcessListSidePanel: React.FC = () => {
           onClick={onClick}
         />
       </ProcessNavLink>
-      <ProcessNavLink label="ダイアログ" defaultOpened>
+      <ProcessNavLink label="ダイアログ">
         <ProcessNavLink
           label="オープンダイアログを開く"
           process="open-dialog"
@@ -109,7 +109,7 @@ const ProcessListSidePanel: React.FC = () => {
           onClick={onClick}
         />
       </ProcessNavLink>
-      <ProcessNavLink label="クリップボード" defaultOpened>
+      <ProcessNavLink label="クリップボード">
         <ProcessNavLink
           label="コピー & ペースト"
           process="clipboard"
@@ -129,7 +129,7 @@ const ProcessListSidePanel: React.FC = () => {
         active={currentProcess === 'os'}
         onClick={onClick}
       />
-      <ProcessNavLink label="状態" defaultOpened>
+      <ProcessNavLink label="状態">
         <ProcessNavLink
           label="状態管理"
           process="state-management"
@@ -140,6 +140,14 @@ const ProcessListSidePanel: React.FC = () => {
           label="データベース接続プール"
           process="database-connection-pool"
           active={currentProcess === 'database-connection-pool'}
+          onClick={onClick}
+        />
+      </ProcessNavLink>
+      <ProcessNavLink label="地図 (OpenLayers)">
+        <ProcessNavLink
+          label="タイル地図"
+          process="tile-maps"
+          active={currentProcess === 'tile-maps'}
           onClick={onClick}
         />
       </ProcessNavLink>

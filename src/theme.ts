@@ -51,7 +51,6 @@ export const theme = createTheme({
     Radio: Radio.extend({
       defaultProps: {
         size: 'sm',
-        variant: 'outline',
       },
     }),
     Checkbox: Checkbox.extend({
