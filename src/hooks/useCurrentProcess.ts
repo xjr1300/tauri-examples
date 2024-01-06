@@ -16,7 +16,8 @@ export type ProcessIdentifier =
   | 'notification'
   | 'os'
   | 'state-management'
-  | 'database-connection-pool';
+  | 'database-connection-pool'
+  | 'tile-maps';
 
 export type CurrentProcess = {
   currentProcess: ProcessIdentifier;

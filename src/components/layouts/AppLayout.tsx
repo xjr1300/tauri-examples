@@ -24,6 +24,7 @@ import Notification from '../Notification';
 import OS from '../OS';
 import StateManagement from '../states/StateManagement';
 import DatabaseConnectionPool from '../states/DatabaseConnectionPool';
+import TileMaps from '../maps/TileMaps';
 
 const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
   switch (process) {
@@ -57,6 +58,8 @@ const processComponentSelector = (process: ProcessIdentifier): ReactNode => {
       return <StateManagement />;
     case 'database-connection-pool':
       return <DatabaseConnectionPool />;
+    case 'tile-maps':
+      return <TileMaps />;
     default:
       return <Description />;
   }
